@@ -1,2 +1,1 @@
-# SQL-Covid
-Covid Deaths vs Vaccination
+# SQL-Projects
