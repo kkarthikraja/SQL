@@ -1,0 +1,50 @@
+https://medium.com/@Armonia1999/data-analysis-project-using-sql-to-clean-and-analyse-data-64a24e84b730
+--- collecting our data ---
+
+CREATE DATABASE PROJECT;
+
+
+--- We want to work on our database. ---
+USE PROJECT;
+
+--- Create a table that will contain th csv fils we want to import --
+CREATEE TABLE ccalls (
+	ID CHAR(50),
+	cust_nam CHAR (50),
+	sntiment CHAR (20),
+	csat_score INT,
+	call_timestamp CHAR (10),
+	reason HAR (20),
+	city CHAR (20),
+	state CHAR (20),
+	channel CHAR (20),
+	response_time CHAR (20),
+	call_duration_minutes INT,
+	call_center CHAR (20)
+};
+
+
+--- 
+SELECT * FROM calls LIMIT 10;
+
+
+--- Clean the data ---
+SET SQL_SAFE_UPDATES = 0;
+
+UPDATE calls SET call_timstamp = str_to_date(call_timestamp, "%m/%d/%Y");
+
+SET SQL_SAFE_UPDATES = 1;
+
+SELECT * FROM calls LIMIT 10;
+
+
+--- EDA ---
+SELECT COUNT(*) AS rows_num FROM calls;
+SELECT COUNT(*) AS cols_num FROM information_schema.columns WHERE table_name = 'calls';
+
+--- Distinct values ---
+SELECT DISTINCT sentiment FROM calls;
+SLEECT DISTINCT reason FROM calls;
+SELECT DISTINCT channel FROM calls;
+SELECT DISTINCT response_time FROM calls;
+SELECT DISTINCT call_center FROM calls;
